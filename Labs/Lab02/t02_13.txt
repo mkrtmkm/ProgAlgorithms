@@ -1,0 +1,32 @@
+-------------- a --------------
+T(n) = | O(1),          n = 0
+       | T(n-1) + O(1), n >= 1
+
+T(n) = T(n-1) + C = T(n-2) + 2C = T(n-3) + 3C = ... = T(n-k) + kC =
+        = {k = n} = T(0) + nC = C + nC = O(n)
+
+
+-------------- d --------------
+T(n) = | O(1),           n <= a, a > 0
+       | aT(n-a) + O(1), n > a
+
+T(n) = aT(n-a) + C = a(aT(n-2a) + C) + C = a^2T(n-2a) + aC + C =
+        = a^3T(n-3a) + a^2C + aC + C = ... = a^kT(n-ka) + C(1 + a + a^2 + ... + a^{k-1}) =
+        = a^kT(n-ka) + C * (a^k - 1)/(a - 1) = {k = n/a} = a^{n/a}C + C(a^{n/a} - 1)/(a - 1) = O(a^{n/a})
+
+
+-------------- g --------------
+T(n) = | O(1),             n = 1
+       | aT([n/a]) + O(1), n >= 2, a >= 2
+
+T(n) = aT([n/a]) + C = a(aT([n/a^2]) + C) + C = a^2T([n/a^2]) + aC + C = a^3T([n/a^3]) + a^2C + aC + C = ... =
+        = a^kT([n/a^k]) + C(1 + a + a^2 + ... + a^{k-1}) = a^kT([n/a^k]) + C(a^k - 1)/(a - 1) = {k = log_a(n)}
+        = a^{log_a(n)}T([n/a^{log_a(n)}]) + C(a^{log_a(n)} - 1)/(a - 1) = nC + C(n - 1)/(a - 1) = O(n)
+
+-------------- h --------------
+T(n) = | O(1),             n = 1
+       | aT([n/a]) + O(n), n >= 2, a >= 2
+
+T(n) = aT([n/a]) + Cn = a(aT([n/a^2]) + Cn/a) + Cn = a^2T([n/a^2]) + 2Cn = a^3T([n/a^3]) + 3Cn = ... =
+        = a^kT([n/a^k]) + kCn = {k = log_a(n)} = a^{log_a(n)}T([n/a^{log_a(n)}]) + log_a(n)Cn =
+        = nC + nlog_a(n)C = O(nlog n)
