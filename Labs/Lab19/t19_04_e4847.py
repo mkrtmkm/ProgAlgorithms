@@ -76,7 +76,7 @@ def solve():
     if not data:
         return
 
-    heap = MaxHeap()
+    heap = Heap()
     out = []
     idx = 0
 
